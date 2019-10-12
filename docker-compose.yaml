@@ -1,2 +1,65 @@
-version '3'
+version: '3'
 services:
+  cw-bono:
+    image: aahad91/cw-bono
+    environment:
+      - PUBLIC_IP
+      - ADDITIONAL_SHARED_CONFIG
+    ports:
+      - 22
+      - "3478:3478"
+      - "3478:3478/udp"
+      - "5060:5060"
+      - "5060:5060/udp"
+      - "5062:5062"
+  cw-cassandra:
+    sysctls:
+      net.ipv6.conf.lo.disable_ipv6: 0
+    image: aahad91/cw-cassandra
+    environment:
+      - ADDITIONAL_SHARED_CONFIG
+    ports:
+      - 22
+  cw-chronos:
+    image: aahad91/cw-chronos
+    environment:
+      - ADDITIONAL_SHARED_CONFIG
+    ports:
+      - 22
+  cw-ellis:
+    image: aahad91/cw-ellis
+    environment:
+      - ADDITIONAL_SHARED_CONFIG
+    ports:
+      - 22
+      - "80:80"
+  cw-homer:
+    image: aahad91/cw-homer
+    environment:
+      - ADDITIONAL_SHARED_CONFIG
+    ports:
+      - 22
+  cw-homestead:
+    image: aahad91/cw-homestead
+    environment:
+      - ADDITIONAL_SHARED_CONFIG
+    ports:
+      - 22
+  cw-homestead-prov:
+    image: aahad91/cw-homestead-prov
+    environment:
+      - ADDITIONAL_SHARED_CONFIG
+    ports:
+      - 22
+  cw-ralf:
+    image: aahad91/cw-ralf
+    environment:
+      - ADDITIONAL_SHARED_CONFIG
+    ports:
+      - 22
+  cw-sprout:
+    image: aahad91/cw-sprout
+    environment:
+      - ADDITIONAL_SHARED_CONFIG
+    ports:
+      - 22
