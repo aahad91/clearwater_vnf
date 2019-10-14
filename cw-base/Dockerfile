@@ -1,10 +1,6 @@
-FROM ubuntu:trusty
+FROM ubuntu:14.04
 MAINTAINER aahad91
 
-RUN DEBIAN_FRONTEND=noninteractive \
-apt-get install -y \
-net-tools \
-iproute2
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y supervisor curl
 RUN apt-get install -y apt-transport-https unzip
 
@@ -29,8 +25,6 @@ RUN sed -e 's/\#\(precedence ::ffff:0:0\/96  100\)/\1/g' -i /etc/gai.conf
 RUN echo deb http://repo.cw-ngv.com/stable binary/ > /etc/apt/sources.list.d/clearwater.list
 RUN curl -L http://repo.cw-ngv.com/repo_key | apt-key add -
 
-WORKDIR /
-
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes clearwater-infrastructure clearwater-auto-config-docker clearwater-management
 RUN apt-get install -y --force-yes clearwater-snmpd
 
@@ -41,5 +35,5 @@ COPY clearwater-infrastructure.supervisord.conf /etc/supervisor/conf.d/clearwate
 COPY clearwater-group.supervisord.conf /etc/supervisor/conf.d/clearwater-group.conf
 COPY snmpd.supervisord.conf /etc/supervisor/conf.d/snmpd.conf
 COPY pre-stop /usr/bin/pre-stop
-RUN chmod +x /usr/bin/pre-stop
+#RUN chmod +x /usr/bin/pre-stop
 COPY socket-factory.supervisord.conf /etc/clearwater/socket-factory.supervisord.conf

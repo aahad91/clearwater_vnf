@@ -1,6 +1,24 @@
 version: '3'
 services:
+  etcd:
+    image: quay.io/coreos/etcd:v2.2.5
+    command: >
+      -name etcd0
+      -advertise-client-urls http://etcd:2379,http://etcd:4001
+      -listen-client-urls http://0.0.0.0:2379,http://0.0.0.0:4001
+      -initial-advertise-peer-urls http://etcd:2380
+      -listen-peer-urls http://0.0.0.0:2380
+      -initial-cluster etcd0=http://etcd:2380
+      -initial-cluster-state new
+  cw-astaire:
+    build: cw-astaire
+    image: aahad91/cw-astaire
+    environment:
+      - ADDITIONAL_SHARED_CONFIG
+    ports:
+      - 22
   cw-bono:
+    build: cw-bono
     image: aahad91/cw-bono
     environment:
       - PUBLIC_IP
@@ -13,6 +31,7 @@ services:
       - "5060:5060/udp"
       - "5062:5062"
   cw-cassandra:
+    build: cw-cassandra
     sysctls:
       net.ipv6.conf.lo.disable_ipv6: 0
     image: aahad91/cw-cassandra
@@ -21,12 +40,14 @@ services:
     ports:
       - 22
   cw-chronos:
+    build: cw-chronos
     image: aahad91/cw-chronos
     environment:
       - ADDITIONAL_SHARED_CONFIG
     ports:
       - 22
   cw-ellis:
+    build: cw-ellis
     image: aahad91/cw-ellis
     environment:
       - ADDITIONAL_SHARED_CONFIG
@@ -34,30 +55,35 @@ services:
       - 22
       - "80:80"
   cw-homer:
+    build: cw-homer
     image: aahad91/cw-homer
     environment:
       - ADDITIONAL_SHARED_CONFIG
     ports:
       - 22
   cw-homestead:
+    build: cw-homestead
     image: aahad91/cw-homestead
     environment:
       - ADDITIONAL_SHARED_CONFIG
     ports:
       - 22
   cw-homestead-prov:
+    build: cw-homestead-prov
     image: aahad91/cw-homestead-prov
     environment:
       - ADDITIONAL_SHARED_CONFIG
     ports:
       - 22
   cw-ralf:
+    build: cw-ralf
     image: aahad91/cw-ralf
     environment:
       - ADDITIONAL_SHARED_CONFIG
     ports:
       - 22
   cw-sprout:
+    build: cw-sprout
     image: aahad91/cw-sprout
     environment:
       - ADDITIONAL_SHARED_CONFIG

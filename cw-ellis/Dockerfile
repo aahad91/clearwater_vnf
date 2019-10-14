@@ -1,8 +1,8 @@
 FROM aahad91/cw-base
 MAINTAINER aahad91
 
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server
-RUN find /var/lib/mysql -exec touch {} \; && /etc/init.d/mysql start && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y ellis
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes mysql-server
+RUN find /var/lib/mysql -exec touch {} \; && /etc/init.d/mysql start && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes ellis
 
 COPY create_numbers.sh /usr/share/clearwater/ellis/create_numbers.sh
 RUN chmod +x /usr/share/clearwater/ellis/create_numbers.sh
