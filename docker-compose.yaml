@@ -10,14 +10,14 @@ services:
       -listen-peer-urls http://0.0.0.0:2380
       -initial-cluster etcd0=http://etcd:2380
       -initial-cluster-state new
-  cw-astaire:
+  astaire:
     build: cw-astaire
     image: aahad91/cw-astaire
     environment:
       - ADDITIONAL_SHARED_CONFIG
     ports:
       - 22
-  cw-bono:
+  bono:
     build: cw-bono
     image: aahad91/cw-bono
     environment:
@@ -30,7 +30,7 @@ services:
       - "5060:5060"
       - "5060:5060/udp"
       - "5062:5062"
-  cw-cassandra:
+  cassandra:
     build: cw-cassandra
     sysctls:
       net.ipv6.conf.lo.disable_ipv6: 0
@@ -39,14 +39,14 @@ services:
       - ADDITIONAL_SHARED_CONFIG
     ports:
       - 22
-  cw-chronos:
+  chronos:
     build: cw-chronos
     image: aahad91/cw-chronos
     environment:
       - ADDITIONAL_SHARED_CONFIG
     ports:
       - 22
-  cw-ellis:
+  ellis:
     build: cw-ellis
     image: aahad91/cw-ellis
     environment:
@@ -54,35 +54,35 @@ services:
     ports:
       - 22
       - "80:80"
-  cw-homer:
+  homer:
     build: cw-homer
     image: aahad91/cw-homer
     environment:
       - ADDITIONAL_SHARED_CONFIG
     ports:
       - 22
-  cw-homestead:
+  homestead:
     build: cw-homestead
     image: aahad91/cw-homestead
     environment:
       - ADDITIONAL_SHARED_CONFIG
     ports:
       - 22
-  cw-homestead-prov:
+  homestead-prov:
     build: cw-homestead-prov
     image: aahad91/cw-homestead-prov
     environment:
       - ADDITIONAL_SHARED_CONFIG
     ports:
       - 22
-  cw-ralf:
+  ralf:
     build: cw-ralf
     image: aahad91/cw-ralf
     environment:
       - ADDITIONAL_SHARED_CONFIG
     ports:
       - 22
-  cw-sprout:
+  sprout:
     build: cw-sprout
     image: aahad91/cw-sprout
     environment:
