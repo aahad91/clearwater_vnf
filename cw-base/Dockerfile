@@ -24,8 +24,13 @@ RUN echo deb http://repo.cw-ngv.com/stable binary/ > /etc/apt/sources.list.d/cle
 RUN curl -L http://repo.cw-ngv.com/repo_key | apt-key add -
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes clearwater-infrastructure clearwater-auto-config-docker clearwater-management
 RUN apt-get install -y --force-yes clearwater-snmpd
+
+#RUN echo 'conf-dir=/etc/dnsmasq.d/,*.conf' > /etc/dnsmasq.conf
+#RUN echo "user=root" >> /etc/dnsmasq.conf
+
 RUN /etc/init.d/clearwater-auto-config-docker restart
 RUN /etc/init.d/clearwater-infrastructure restart
+#RUN cp /tmp/hosts.* /etc/hosts
 COPY clearwater-infrastructure.supervisord.conf /etc/supervisor/conf.d/clearwater-infrastructure.conf
 COPY clearwater-group.supervisord.conf /etc/supervisor/conf.d/clearwater-group.conf
 COPY snmpd.supervisord.conf /etc/supervisor/conf.d/snmpd.conf

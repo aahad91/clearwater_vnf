@@ -89,3 +89,14 @@ services:
       - ADDITIONAL_SHARED_CONFIG
     ports:
       - 22
+      - "5082:5082"
+  sip-client:
+    build: cw-sip-client
+    image: aahad91/cw-sip-client
+    ports:
+      - 22
+      - "5055:5054"
+      - "5053:5052"
+      - "3060:5060"
+      - "3060:5060/udp"
+    tty: true

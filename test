@@ -1,0 +1,28 @@
+sipp: The following events occured:
+2019-10-21	02:06:37.279190	1571623597.279190: Aborting call on unexpected message for Call-Id '1-237@172.26.0.4': while expecting '401' (index 1), received 'SIP/2.0 100 Trying
+Via: SIP/2.0/TCP 172.26.0.4:42741;received=172.26.0.4;branch=z9hG4bK-237-1-0
+Call-ID: 1-237@172.26.0.4
+From: <sip:2010000001@example.com>;tag=237SIPpTag001
+To: <sip:2010000001@example.com>
+CSeq: 1 REGISTER
+Content-Length:  0
+
+'.
+2019-10-21	02:06:37.286522	1571623597.286522: Aborting call on unexpected message for Call-Id '2-237@172.26.0.4': while expecting '401' (index 1), received 'SIP/2.0 100 Trying
+Via: SIP/2.0/TCP 172.26.0.4:38415;received=172.26.0.4;branch=z9hG4bK-237-2-0
+Call-ID: 2-237@172.26.0.4
+From: <sip:2010000000@example.com>;tag=237SIPpTag002
+To: <sip:2010000000@example.com>
+CSeq: 1 REGISTER
+Content-Length:  0
+
+'.
+2019-10-21	02:06:37.291662	1571623597.291662: Aborting call on unexpected message for Call-Id '3-237@172.26.0.4': while expecting '401' (index 1), received 'SIP/2.0 100 Trying
+Via: SIP/2.0/TCP 172.26.0.4:44845;received=172.26.0.4;branch=z9hG4bK-237-3-0
+Call-ID: 3-237@172.26.0.4
+From: <sip:2010000002@example.com>;tag=237SIPpTag003
+To: <sip:2010000002@example.com>
+CSeq: 1 REGISTER
+Content-Length:  0
+
+'.
